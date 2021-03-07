@@ -1,0 +1,7 @@
+name: boxboxbox-mrb
+description: BoxboxboxMrb class
+author: Yusuke Sangenya
+website: https://github.com/eva/boxboxbox-mrb
+protocol: git
+repository: https://github.com/eva/boxboxbox-mrb.git
+license: MIT
