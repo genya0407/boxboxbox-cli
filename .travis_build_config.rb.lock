@@ -1,0 +1,97 @@
+---
+mruby_version:
+  version: 2.1.2
+  release_no: 20102
+  git_commit: 1a9bdfcde5fd7c91e756747ba0565f29385115a7
+builds:
+  host:
+    https://github.com/iij/mruby-dir.git:
+      url: https://github.com/iij/mruby-dir.git
+      branch: HEAD
+      commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
+      version: 0.0.0
+    https://github.com/matsumotory/mruby-httprequest.git:
+      url: https://github.com/matsumotory/mruby-httprequest.git
+      branch: HEAD
+      commit: 628d43dca8b9231b75cb966a471f171e735bb907
+      version: 0.0.1
+    https://github.com/matsumotory/mruby-simplehttp.git:
+      url: https://github.com/matsumotory/mruby-simplehttp.git
+      branch: HEAD
+      commit: fc2ecd21eedcafd9bb7cad6a014d4f33c87a6196
+      version: 0.0.1
+    https://github.com/mattn/mruby-http.git:
+      url: https://github.com/mattn/mruby-http.git
+      branch: HEAD
+      commit: dfabda4dc0fa8581a8760097c0cb79d4395199a5
+      version: 0.0.0
+    https://github.com/iij/mruby-env.git:
+      url: https://github.com/iij/mruby-env.git
+      branch: HEAD
+      commit: 056ae324451ef16a50c7887e117f0ea30921b71b
+      version: 0.0.0
+    https://github.com/luisbebop/mruby-polarssl.git:
+      url: https://github.com/luisbebop/mruby-polarssl.git
+      branch: HEAD
+      commit: 37b14f7b7378bc798eb980d8649f3fcfb1a1defe
+      version: 2.1.2
+    https://github.com/matsumotory/mruby-simplehttpserver.git:
+      url: https://github.com/matsumotory/mruby-simplehttpserver.git
+      branch: HEAD
+      commit: b017b4cd124c81bfde1afc2c69ff5d5273ef4980
+      version: 1.0.0
+    https://github.com/iij/mruby-mtest.git:
+      url: https://github.com/iij/mruby-mtest.git
+      branch: HEAD
+      commit: 34a477d249b0d21671058be33aa75d04c3e981ba
+      version: 0.0.0
+    https://github.com/katzer/mruby-shelf.git:
+      url: https://github.com/katzer/mruby-shelf.git
+      branch: HEAD
+      commit: 3bf2bc69eaceb4555ded37081e61c247808e6d88
+      version: 0.0.0
+    https://github.com/katzer/mruby-process.git:
+      url: https://github.com/katzer/mruby-process.git
+      branch: HEAD
+      commit: '084a97c58be407ddf3536fcb525ad1f73e71d86d'
+      version: 0.0.0
+    https://github.com/katzer/mruby-r3.git:
+      url: https://github.com/katzer/mruby-r3.git
+      branch: HEAD
+      commit: 4afb07dc09fb199bd7907deff5666d68131767df
+      version: 0.0.0
+    https://github.com/katzer/mruby-os.git:
+      url: https://github.com/katzer/mruby-os.git
+      branch: HEAD
+      commit: 8e6e1dca8284f142bea681bfe032ebe7bae3851a
+      version: 0.0.0
+    https://github.com/mattn/mruby-json.git:
+      url: https://github.com/mattn/mruby-json.git
+      branch: HEAD
+      commit: '054699892b0d681110e7348440cddb70a3fd671e'
+      version: 0.0.0
+    https://github.com/mattn/mruby-base64.git:
+      url: https://github.com/mattn/mruby-base64.git
+      branch: HEAD
+      commit: c56d0d1a11d065ddaf7498970ef24f20136298d7
+      version: 0.0.0
+    https://github.com/katzer/mruby-logger.git:
+      url: https://github.com/katzer/mruby-logger.git
+      branch: HEAD
+      commit: 26b17545f0f37815142310d68eaf9fd5606bc05b
+      version: 0.0.0
+    https://github.com/mattn/mruby-onig-regexp.git:
+      url: https://github.com/mattn/mruby-onig-regexp.git
+      branch: HEAD
+      commit: 76087d150d12f167e95ae10d326099b352cf3d18
+      version: 0.0.0
+    https://github.com/monochromegane/mruby-time-strftime.git:
+      url: https://github.com/monochromegane/mruby-time-strftime.git
+      branch: HEAD
+      commit: ea8a77504f43fe9f985529b987f3d88bf2a2291a
+      version: 0.0.0
+    https://github.com/genya0407/mruby-simplehttp.git:
+      url: https://github.com/genya0407/mruby-simplehttp.git
+      branch: HEAD
+      commit: ebab58b14989bf1f6e3605514b6fa6c4b64e4130
+      version: 0.0.1

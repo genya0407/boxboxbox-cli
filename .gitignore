@@ -1,1 +1,4 @@
 mruby/
+input_images/
+config.txt
+*.csv
