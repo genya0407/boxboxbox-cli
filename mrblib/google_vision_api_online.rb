@@ -71,8 +71,8 @@ class GoogleVisionApiOnline
   end
 
   def vertices2box(image_name:, vertices:)
-    xs = vertices.map { |vertice| vertice[:x]&.to_f || 0.0 }
-    ys = vertices.map { |vertice| vertice[:y]&.to_f || 0.0 }
+    xs = vertices.map { |vertice| vertice.fetch('x') }
+    ys = vertices.map { |vertice| vertice.fetch('y') }
     Box.new(
       image_name: image_name,
       top_left: Point.new(x: xs.min || 0.0, y: ys.min || 0.0),
@@ -82,8 +82,8 @@ class GoogleVisionApiOnline
 
   def response2person_vertices(response_body:)
     localized_object_annotations = JSON.parse(response_body).dig('responses', 0, 'localizedObjectAnnotations') || []
-    localized_object_annotations.select { |annot| annot['name'] == PERSON_LABEL }
-                                .select { |annot| annot['score'] >= @min_percentage }
+    localized_object_annotations.select { |annot| annot.fetch('name') == PERSON_LABEL }
+                                .select { |annot| annot.fetch('score') >= @min_percentage }
                                 .map { |annot| annot.dig('boundingPoly', 'normalizedVertices') }
   end
 end
