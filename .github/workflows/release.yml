@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:  
+      - uses: actions/checkout@v1
+
+      - name: Install dependent packages
+        run: "sudo apt-get update && sudo apt-get install build-essentials git ruby gcc-mingw-w64-x86-64"
+
+      - name: pack
+        run: "MRUBY_CONFIG_MINGW=build_config_mingw_ubuntu.rb rake pack_mingw"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: boxboxbox_mingw-${{ GITHUB_SHA }}
+          path: dist/boxboxbox_mingw.zip
+
+  create-release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - id: create-release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: false
+      - run: |
+          echo '${{ steps.create-release.outputs.upload_url }}' > release_upload_url.txt
+      - uses: actions/upload-artifact@v1
+        with:
+          name: create-release-${{ GITHUB_SHA }}
+          path: release_upload_url.txt
+
+  upload-release:
+    needs: [create-release]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          name: create-release-${{ GITHUB_SHA }}
+      - id: upload-url
+        run: |
+          echo "::set-output name=url::$(cat create-release-${{ GITHUB_SHA }}/release_upload_url.txt)"
+      - uses: actions/download-artifact@v1
+        with:
+          name: boxboxbox_mingw-${{ GITHUB_SHA }}
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.upload-url.outputs.url }}
+          asset_path: boxboxbox_mingw-${{ GITHUB_SHA }}/dist/boxboxbox_mingw.zip
+          asset_name: boxboxbox_mingw.zip
+          asset_content_type: application/zip
