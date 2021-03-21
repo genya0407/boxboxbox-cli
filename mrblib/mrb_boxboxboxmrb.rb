@@ -8,6 +8,7 @@ class Config
     :max_retry,
     :input_dir,
   ]
+  IMAGE_EXTENSIONS = %w[png jpeg jpg]
   
   PROPS.each do |prop|
     define_method prop do |*val|
@@ -35,7 +36,7 @@ def __main__(argv)
   
   input_files = Enumerator.new do |y|
     Dir.foreach(cfg.input_dir) do |fname|
-      if fname =~ /\.jpg$|\.png$|\.jpeg$/
+      if IMAGE_EXTENSIONS.any? { |ext| fname.end_with?(ext) }
         content = File.read(File.join(cfg.input_dir, fname))
         y << BinaryImage.new(name: fname, binary: content)
       end

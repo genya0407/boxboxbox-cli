@@ -1,0 +1,47 @@
+---
+mruby:
+  version: 3.0.0
+  release_no: 30000
+  git_commit: 0f45836b5954accf508f333f932741b925214471
+builds:
+  cross-mingw:
+    https://github.com/iij/mruby-dir.git:
+      url: https://github.com/iij/mruby-dir.git
+      branch: master
+      commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
+      version: 0.0.0
+    https://github.com/matsumotory/mruby-simplehttp.git:
+      url: https://github.com/matsumotory/mruby-simplehttp.git
+      branch: master
+      commit: 4b756cdc743dd3f21b79401e9e0c788ce3e95c98
+      version: 0.0.1
+    https://github.com/mattn/mruby-json.git:
+      url: https://github.com/mattn/mruby-json.git
+      branch: master
+      commit: '054699892b0d681110e7348440cddb70a3fd671e'
+      version: 0.0.0
+    https://github.com/mattn/mruby-base64.git:
+      url: https://github.com/mattn/mruby-base64.git
+      branch: master
+      commit: c56d0d1a11d065ddaf7498970ef24f20136298d7
+      version: 0.0.0
+    https://github.com/katzer/mruby-logger.git:
+      url: https://github.com/katzer/mruby-logger.git
+      branch: master
+      commit: 26b17545f0f37815142310d68eaf9fd5606bc05b
+      version: 0.0.0
+    https://github.com/monochromegane/mruby-time-strftime.git:
+      url: https://github.com/monochromegane/mruby-time-strftime.git
+      branch: master
+      commit: ea8a77504f43fe9f985529b987f3d88bf2a2291a
+      version: 0.0.0
+    https://github.com/iij/mruby-env.git:
+      url: https://github.com/iij/mruby-env.git
+      branch: master
+      commit: 056ae324451ef16a50c7887e117f0ea30921b71b
+      version: 0.0.0
+    https://github.com/luisbebop/mruby-polarssl.git:
+      url: https://github.com/luisbebop/mruby-polarssl.git
+      branch: master
+      commit: 37b14f7b7378bc798eb980d8649f3fcfb1a1defe
+      version: 2.1.2
