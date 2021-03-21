@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: boxboxbox_mingw-$GITHUB_SHA
+          name: boxboxbox_mingw-${{ github.sha }}
           path: dist/boxboxbox_mingw.zip
 
   create-release:
@@ -38,7 +38,7 @@ jobs:
           echo '${{ steps.create-release.outputs.upload_url }}' > release_upload_url.txt
       - uses: actions/upload-artifact@v1
         with:
-          name: create-release-$GITHUB_SHA
+          name: create-release-${{ github.sha }}
           path: release_upload_url.txt
 
   upload-release:
@@ -47,18 +47,18 @@ jobs:
     steps:
       - uses: actions/download-artifact@v1
         with:
-          name: create-release-$GITHUB_SHA
+          name: create-release-${{ github.sha }}
       - id: upload-url
         run: |
-          echo "::set-output name=url::$(cat create-release-$GITHUB_SHA/release_upload_url.txt)"
+          echo "::set-output name=url::$(cat create-release-${{ github.sha }}/release_upload_url.txt)"
       - uses: actions/download-artifact@v1
         with:
-          name: boxboxbox_mingw-$GITHUB_SHA
+          name: boxboxbox_mingw-${{ github.sha }}
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.upload-url.outputs.url }}
-          asset_path: boxboxbox_mingw-$GITHUB_SHA/dist/boxboxbox_mingw.zip
+          asset_path: boxboxbox_mingw-${{ github.sha }}/dist/boxboxbox_mingw.zip
           asset_name: boxboxbox_mingw.zip
           asset_content_type: application/zip
