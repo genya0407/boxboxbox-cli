@@ -1,4 +1,3 @@
-CONFIG_FILE='config.txt'
 class Config
   PROPS = [
     :access_token,
@@ -9,6 +8,7 @@ class Config
     :input_dir,
   ]
   IMAGE_EXTENSIONS = %w[png jpeg jpg]
+  CONFIG_FILE='config.txt'
   
   PROPS.each do |prop|
     define_method prop do |*val|
@@ -23,7 +23,7 @@ class Config
 end
 
 def __main__(argv)
-  script = File.read(CONFIG_FILE)
+  script = File.read(Config::CONFIG_FILE)
   cfg = Config.new
   cfg.instance_eval(script)
   
