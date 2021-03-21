@@ -1,6 +1,6 @@
 name: Release
 
-on: [pull-request push]
+on: [pull-request, push]
 
 jobs:
   build:
