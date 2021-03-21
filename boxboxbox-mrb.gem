@@ -1,7 +1,7 @@
 name: boxboxbox-mrb
 description: BoxboxboxMrb class
 author: Yusuke Sangenya
-website: https://github.com/eva/boxboxbox-mrb
+website: https://github.com/genya0407/boxboxbox-cli
 protocol: git
-repository: https://github.com/eva/boxboxbox-mrb.git
+repository: https://github.com/genya0407/boxboxbox-cli.git
 license: MIT
