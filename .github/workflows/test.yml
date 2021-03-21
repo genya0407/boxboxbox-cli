@@ -1,0 +1,20 @@
+name: Release
+
+on: [pull-request push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_config: 
+          - build_config.rb
+          - build_config_mingw_ubuntu.rb
+    steps:  
+      - uses: actions/checkout@v1
+
+      - name: Install dependent packages
+        run: "sudo apt-get update && sudo apt-get install build-essential git ruby gcc-mingw-w64-x86-64"
+
+      - name: build
+        run: "MRUBY_CONFIG=${{ matrix.build_config }} rake compile"
