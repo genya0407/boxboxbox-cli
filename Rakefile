@@ -22,13 +22,35 @@ task :clean do
   sh "cd mruby && rake deep_clean"
 end
 
-file :mruby_mingw do
+task :default => :compile
+
+## cross compile
+
+file :mruby_mingw do |task|
+  break unless task.needed?
   sh "git clone -b #{MRUBY_VERSION} --depth=1 git://github.com/mruby/mruby.git mruby_mingw"
 end
 
-desc "compile for windows (host: archlinux)"
-task :compile_win => :mruby_mingw do
+file 'dist/boxboxbox.exe' => :mruby_mingw do |task|
+  break unless task.needed?
   sh "cd mruby_mingw && rake all MRUBY_CONFIG=#{MRUBY_CONFIG_MINGW}"
+  sh "cp mruby_mingw/build/cross-mingw/bin/boxboxbox.exe dist/boxboxbox.exe"
 end
 
-task :default => :compile
+file 'dist/boxboxbox_mingw.zip' => %w[dist/boxboxbox.exe config.txt.sample input_images/.keep how_to_use.txt] do |task|
+  break unless task.needed?
+  sh "rm -f dist/boxboxbox_mingw.zip"
+  sh "rm -rf dist/boxboxbox_mingw"
+  sh "mkdir dist/boxboxbox_mingw"
+  sh "mkdir dist/boxboxbox_mingw/input_images"
+  sh "touch dist/boxboxbox_mingw/input_images/.keep"
+  sh "cp #{task.sources.join(' ')} dist/boxboxbox_mingw/"
+  sh "mv dist/boxboxbox_mingw/config.txt.sample dist/boxboxbox_mingw/config.txt"
+  sh "cd dist && zip boxboxbox_mingw.zip -r boxboxbox_mingw"
+end
+
+desc "compile for windows (host: archlinux)"
+task :compile_mingw => 'dist/boxboxbox.exe'
+
+desc "pack zip for win"
+task :pack_mingw => 'dist/boxboxbox_mingw.zip'

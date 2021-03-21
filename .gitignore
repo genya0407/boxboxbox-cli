@@ -4,3 +4,5 @@ input_images/*
 !input_images/.keep
 config.txt
 *.csv
+dist/*
+!dist/.keep
