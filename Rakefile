@@ -7,8 +7,11 @@ file :mruby do
 end
 
 desc "compile binary"
-task :compile => :mruby do
+task :compile => 'dist/boxboxbox'
+
+file 'dist/boxboxbox' => :mruby do
   sh "cd mruby && rake all MRUBY_CONFIG=#{MRUBY_CONFIG}"
+  sh "cp mruby/bin/boxboxbox dist/boxboxbox"
 end
 
 desc "test"

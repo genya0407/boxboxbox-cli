@@ -6,3 +6,4 @@ config.txt
 *.csv
 dist/*
 !dist/.keep
+logs.txt

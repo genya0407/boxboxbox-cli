@@ -4,7 +4,7 @@ class GoogleVisionApiOnline
   URL = 'https://vision.googleapis.com/v1/images:annotate'
   PERSON_LABEL = 'Person'
 
-  def initialize(access_token:, max_results:, min_percentage:, max_retry:, logger: Logger.new(STDERR))
+  def initialize(access_token:, max_results:, min_percentage:, max_retry:, logger:)
     @access_token = access_token
     @max_results = max_results
     @min_percentage = min_percentage
@@ -19,6 +19,8 @@ class GoogleVisionApiOnline
     # 失敗したらmax_retry回リトライする。
     # リトライの間隔は指数的に伸ばす
     loop do
+      @logger.info("#{__FILE__}:#{__LINE__} Start querying #{images.map(&:name).join(',')}")
+
       result = exec_request(images: images)
       boxes.concat(result[:success_boxes])
 
@@ -30,6 +32,8 @@ class GoogleVisionApiOnline
       images = result[:failed_images]
     end
 
+    @logger.info("#{__FILE__}:#{__LINE__} Finished querying #{images.map(&:name).join(',')}")
+
     boxes
   end
 
@@ -40,6 +44,8 @@ class GoogleVisionApiOnline
     failed_images = []
     
     images.each do |image|
+      @logger.info("#{__FILE__}:#{__LINE__} Query #{image.name}")
+
       http = SimpleHttp.new('https', 'vision.googleapis.com')
       body = JSON.generate(
         {
