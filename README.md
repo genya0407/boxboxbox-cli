@@ -1,27 +1,18 @@
-# boxboxbox-mrb   [![Build Status](https://travis-ci.org/eva/boxboxbox-mrb.svg?branch=master)](https://travis-ci.org/eva/boxboxbox-mrb)
-BoxboxboxMrb class
-## install by mrbgems
-- add conf.gem line to `build_config.rb`
+# Boxboxbox CLI
 
-```ruby
-MRuby::Build.new do |conf|
+## How to use
 
-    # ... (snip) ...
-
-    conf.gem :github => 'eva/boxboxbox-mrb'
-end
-```
-## example
-```ruby
-p BoxboxboxMrb.hi
-#=> "hi!!"
-t = BoxboxboxMrb.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
+```shell
+$ rake
+# => generates ./mruby/bin/boxboxbox
+$ cp some_image.jpg input_images/
+$ ./mruby/bin/boxboxbox
+# => generates csv file
 ```
 
-## License
-under the MIT License:
-- see LICENSE file
+## Build for windows
+
+```shell
+$ MRUBY_CONFIG=build_config_mingw_archlinux.rb rake
+# => generates ./mruby/build/cross-mingw/bin/boxboxbox.exe
+```
