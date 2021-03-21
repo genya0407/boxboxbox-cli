@@ -1,0 +1,6 @@
+access_token 'Your GCP token here. ref: https://cloud.google.com/docs/authentication/api-keys?hl=ja&visit_id=637181458485270170-1399720475&rd=1#creating_an_api_key'
+localizer_batch_size 10
+max_results 50
+min_percentage 0.5
+max_retry 3
+input_dir 'input_images'
