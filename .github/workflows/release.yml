@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Install dependent packages
-        run: "sudo apt-get update && sudo apt-get install build-essentials git ruby gcc-mingw-w64-x86-64"
+        run: "sudo apt-get update && sudo apt-get install build-essential git ruby gcc-mingw-w64-x86-64"
 
       - name: pack
         run: "MRUBY_CONFIG_MINGW=build_config_mingw_ubuntu.rb rake pack_mingw"
